@@ -19,7 +19,7 @@ com.android.ddmlib.DdmPreferences.setTimeOut(60000)
 android {
     // The following are set in the common.gradle file
     compileSdkVersion("Google Inc.:Google APIs:19")
-    buildToolsVersion("22.0.1")
+    buildToolsVersion("23.0.3")
     // compileSdkVersion(compileVersion)
     // buildToolsVersion(buildTools)
     defaultConfig {

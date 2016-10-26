@@ -17,6 +17,7 @@ package org.koboc.collect.android.activities;
 import org.koboc.collect.android.R;
 import org.koboc.collect.android.application.Collect;
 import org.koboc.collect.android.preferences.PreferencesActivity;
+import org.odk.collect.android.activities.LoginActivity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -111,7 +112,7 @@ public class SplashScreenActivity extends Activity {
     private void endSplashScreen() {
 
         // launch new activity and close splash screen
-        startActivity(new Intent(SplashScreenActivity.this, MainMenuActivity.class));
+        startActivity(new Intent(SplashScreenActivity.this,LoginActivity.class));
         finish();
     }
 
