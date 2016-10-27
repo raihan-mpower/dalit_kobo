@@ -28,7 +28,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.koboc.collect.android.Manifest;
 import org.koboc.collect.android.R;
 import org.koboc.collect.android.application.Collect;
 import org.koboc.collect.android.preferences.AdminPreferencesActivity;
@@ -66,11 +65,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import org.koboc.collect.android.provider.FormsProviderAPI.FormsColumns;
 import org.koboc.collect.android.tasks.DownloadFormsTask;
@@ -202,7 +199,7 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		button2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent start = new Intent(MainMenuActivity.this, question_status_list_Activity.class);
+				Intent start = new Intent(MainMenuActivity.this, org.koboc.collect.android.activities.question_status_list_Activity.class);
 
 				startActivity(start);
 //        finish();
@@ -213,9 +210,10 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		button3.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent start = new Intent(MainMenuActivity.this, org.koboc.collect.android.activities.webView.class);
-
-				startActivity(start.putExtra("urladdress","http://ctpi.mpower-social.com:8003/html/thana_contact.html"));
+//				Intent start = new Intent(MainMenuActivity.this, org.koboc.collect.android.activities.webView.class);
+				Intent start = new Intent(MainMenuActivity.this, org.koboc.collect.android.activities.policeMainActivity.class);
+				startActivity(start);
+//				startActivity(start.putExtra("urladdress","http://ctpi.mpower-social.com:8003/html/thana_contact.html"));
 //        finish();
 			}
 		});
