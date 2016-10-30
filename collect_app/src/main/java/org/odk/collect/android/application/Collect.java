@@ -31,6 +31,7 @@ import org.opendatakit.httpclientandroidlib.protocol.BasicHttpContext;
 import org.opendatakit.httpclientandroidlib.protocol.HttpContext;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -66,6 +67,8 @@ public class Collect extends Application {
     private FormController mFormController = null;
     private ExternalDataManager externalDataManager;
 
+    private static Context context;
+
     private static Collect singleton = null;
 
     public static Collect getInstance() {
@@ -100,6 +103,10 @@ public class Collect extends Application {
         int questionFontsize = Integer.valueOf(question_font);
         return questionFontsize;
     }
+
+    //
+
+
 
     public String getVersionedAppName() {
         String versionDetail = "";
@@ -149,6 +156,10 @@ public class Collect extends Application {
                 }
             }
         }
+    }
+
+    public static Context getAppContext() {
+        return Collect.context;
     }
 
     /**
@@ -220,6 +231,7 @@ public class Collect extends Application {
 
         PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
         super.onCreate();
+        Collect.context = getApplicationContext();
 
         PropertyManager mgr = new PropertyManager(this);
 

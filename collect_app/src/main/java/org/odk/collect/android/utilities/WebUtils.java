@@ -17,8 +17,11 @@ package org.koboc.collect.android.utilities;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -62,6 +65,8 @@ import org.opendatakit.httpclientandroidlib.params.HttpConnectionParams;
 import org.opendatakit.httpclientandroidlib.params.HttpParams;
 import org.opendatakit.httpclientandroidlib.protocol.HttpContext;
 import org.xmlpull.v1.XmlPullParser;
+
+import org.opendatakit.httpclientandroidlib.auth.Credentials;
 
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -174,6 +179,31 @@ public final class WebUtils {
 			credsProvider.setCredentials(a, c);
 		}
 	}
+
+	public static void addCredentials(String username, String password) {
+
+		String host = createServerHost();
+		addCredentials(username, password, host);
+	}
+
+	public static final String createServerHost(){
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(Collect.getAppContext());
+		String scheduleUrl = prefs.getString(PreferencesActivity.KEY_SERVER_URL, Collect.getAppContext()
+				.getResources().getString(R.string.default_server_url));
+
+		String host = "";
+
+		try {
+			host = new URL(URLDecoder.decode(scheduleUrl, "utf-8")).getHost();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		return host;
+	}
+
+
 
 	public static final void enablePreemptiveBasicAuth(
 			HttpContext localContext, String host) {
@@ -316,21 +346,21 @@ public final class WebUtils {
 	 * @param httpclient
 	 * @return
 	 */
-	public static DocumentFetchResult getXmlDocument(String urlString,
-			HttpContext localContext, HttpClient httpclient) {
+	public static org.koboc.collect.android.utilities.DocumentFetchResult getXmlDocument(String urlString,
+																						 HttpContext localContext, HttpClient httpclient) {
 		URI u = null;
 		try {
 			URL url = new URL(urlString);
 			u = url.toURI();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new DocumentFetchResult(e.getLocalizedMessage()
+			return new org.koboc.collect.android.utilities.DocumentFetchResult(e.getLocalizedMessage()
 			// + app.getString(R.string.while_accessing) + urlString);
 					+ ("while accessing") + urlString, 0);
 		}
 
 		if (u.getHost() == null ) {
-			return new DocumentFetchResult("Invalid server URL (no hostname): " + urlString, 0);
+			return new org.koboc.collect.android.utilities.DocumentFetchResult("Invalid server URL (no hostname): " + urlString, 0);
 		}
 
 		// if https then enable preemptive basic auth...
@@ -358,14 +388,14 @@ public final class WebUtils {
 				String webError = response.getStatusLine().getReasonPhrase()
 						+ " (" + statusCode + ")";
 
-				return new DocumentFetchResult(u.toString()
+				return new org.koboc.collect.android.utilities.DocumentFetchResult(u.toString()
 						+ " responded with: " + webError, statusCode);
 			}
 
 			if (entity == null) {
 				String error = "No entity body returned from: " + u.toString();
 				Log.e(t, error);
-				return new DocumentFetchResult(error, 0);
+				return new org.koboc.collect.android.utilities.DocumentFetchResult(error, 0);
 			}
 
 			if (!entity.getContentType().getValue().toLowerCase(Locale.ENGLISH)
@@ -377,7 +407,7 @@ public final class WebUtils {
 						+ u.toString()
 						+ " is not text/xml.  This is often caused a network proxy.  Do you need to login to your network?";
 				Log.e(t, error);
-				return new DocumentFetchResult(error, 0);
+				return new org.koboc.collect.android.utilities.DocumentFetchResult(error, 0);
 			}
 			// parse response
 			Document doc = null;
@@ -428,7 +458,7 @@ public final class WebUtils {
 				String error = "Parsing failed with " + e.getMessage()
 						+ "while accessing " + u.toString();
 				Log.e(t, error);
-				return new DocumentFetchResult(error, 0);
+				return new org.koboc.collect.android.utilities.DocumentFetchResult(error, 0);
 			}
 
 			boolean isOR = false;
@@ -455,7 +485,7 @@ public final class WebUtils {
 							+ " unrecognized version(s): " + b.toString());
 				}
 			}
-			return new DocumentFetchResult(doc, isOR);
+			return new org.koboc.collect.android.utilities.DocumentFetchResult(doc, isOR);
 		} catch (Exception e) {
 			clearHttpConnectionManager();
 			e.printStackTrace();
@@ -469,7 +499,7 @@ public final class WebUtils {
 					+ u.toString();
 
 			Log.w(t, error);
-			return new DocumentFetchResult(error, 0);
+			return new org.koboc.collect.android.utilities.DocumentFetchResult(error, 0);
 		}
 	}
 

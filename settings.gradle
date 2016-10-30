@@ -31,6 +31,7 @@ settingsScripts.each {
     apply from: it
 }
 
+
 include(collectProjectChild)
 
 if (playServicesPath.exists() && gradle.ext.useLocal) { // check if local play services project is present

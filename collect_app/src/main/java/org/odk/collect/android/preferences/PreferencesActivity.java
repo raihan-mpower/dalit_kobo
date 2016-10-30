@@ -129,7 +129,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
     final boolean adminMode = getIntent().getBooleanExtra(INTENT_KEY_ADMIN_MODE, false);
 
     SharedPreferences adminPreferences = getSharedPreferences(
-        AdminPreferencesActivity.ADMIN_PREFERENCES, 0);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.ADMIN_PREFERENCES, 0);
 
     // assign all the preferences in advance because changing one often
     // affects another

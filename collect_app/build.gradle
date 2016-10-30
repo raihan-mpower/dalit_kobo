@@ -12,13 +12,14 @@ applicationScripts.each {
     apply from: it
 }
 
+
 apply plugin: 'com.android.application'
 
 com.android.ddmlib.DdmPreferences.setTimeOut(60000)
 
 android {
     // The following are set in the common.gradle file
-    compileSdkVersion("Google Inc.:Google APIs:19")
+    compileSdkVersion("Google Inc.:Google APIs:23")
     buildToolsVersion("23.0.3")
     // compileSdkVersion(compileVersion)
     // buildToolsVersion(buildTools)
@@ -58,10 +59,7 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
-    compileOptions {
-        sourceCompatibility javaVersion
-        targetCompatibility javaVersion
-    }
+
 }
 
 configurations.all {
@@ -70,6 +68,10 @@ configurations.all {
         cacheChangingModulesFor(0, 'seconds')
     }
     transitive = true
+}
+
+android {
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
