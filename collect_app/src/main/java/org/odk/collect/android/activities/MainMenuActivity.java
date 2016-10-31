@@ -292,6 +292,19 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 //        finish();
 			}
 		});
+		Button button11 = (Button)findViewById(R.id.button11);
+
+		button11.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Collect.getInstance().getActivityLogger()
+						.logAction(this, "uploadForms", "click");
+				Intent i = new Intent(getApplicationContext(),
+						org.koboc.collect.android.activities.InstanceUploaderList.class);
+				startActivity(i);
+//        finish();
+			}
+		});
 		////////////////////dalit///////////////////////সচরাচর জিজ্ঞাস্য প্রশ্ন
 
 		// must be at the beginning of any activity that can be called from an

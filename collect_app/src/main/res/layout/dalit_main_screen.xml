@@ -74,6 +74,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/button10"
                 android:layout_weight="1" />
+            <Button
+                android:text="ফর্ম পাঠান"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button11"
+                android:layout_weight="1" />
         </LinearLayout>
     </ScrollView>
 
