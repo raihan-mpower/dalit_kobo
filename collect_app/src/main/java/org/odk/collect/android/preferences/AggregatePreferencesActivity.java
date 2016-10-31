@@ -49,9 +49,9 @@ public class AggregatePreferencesActivity extends PreferenceActivity {
 
 		addPreferencesFromResource(R.xml.aggregate_preferences);
 
-		mServerUrlPreference = (EditTextPreference) findPreference(PreferencesActivity.KEY_SERVER_URL);
-		mUsernamePreference = (EditTextPreference) findPreference(PreferencesActivity.KEY_USERNAME);
-		mPasswordPreference = (EditTextPreference) findPreference(PreferencesActivity.KEY_PASSWORD);
+		mServerUrlPreference = (EditTextPreference) findPreference(org.koboc.collect.android.preferences.PreferencesActivity.KEY_SERVER_URL);
+		mUsernamePreference = (EditTextPreference) findPreference(org.koboc.collect.android.preferences.PreferencesActivity.KEY_USERNAME);
+		mPasswordPreference = (EditTextPreference) findPreference(org.koboc.collect.android.preferences.PreferencesActivity.KEY_PASSWORD);
 
 		PreferenceCategory aggregatePreferences = (PreferenceCategory) findPreference(getString(R.string.aggregate_preferences));
 
@@ -106,7 +106,7 @@ public class AggregatePreferencesActivity extends PreferenceActivity {
                 preference.setSummary(username);
 
                 SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-                String server = settings.getString(PreferencesActivity.KEY_SERVER_URL, getString(R.string.default_server_url));
+                String server = settings.getString(org.koboc.collect.android.preferences.PreferencesActivity.KEY_SERVER_URL, getString(R.string.default_server_url));
                 Uri u = Uri.parse(server);
                 WebUtils.clearHostCredentials(u.getHost());
                 Collect.getInstance().getCookieStore().clear();
@@ -140,7 +140,7 @@ public class AggregatePreferencesActivity extends PreferenceActivity {
 						}
 
 		                SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-		                String server = settings.getString(PreferencesActivity.KEY_SERVER_URL, getString(R.string.default_server_url));
+		                String server = settings.getString(org.koboc.collect.android.preferences.PreferencesActivity.KEY_SERVER_URL, getString(R.string.default_server_url));
 		                Uri u = Uri.parse(server);
 		                WebUtils.clearHostCredentials(u.getHost());
 		                Collect.getInstance().getCookieStore().clear();

@@ -25,10 +25,16 @@ import android.widget.Toast;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 import org.koboc.collect.android.R;
 import org.odk.collect.android.utilities.NetUtils;
 import org.odk.collect.android.utilities.UserCollection;
 import org.odk.collect.android.utilities.UserDataCollection;
+
+import java.util.LinkedList;
+import java.util.List;
 
 
 /**
@@ -124,7 +130,7 @@ public class LoginActivity extends Activity {
 		super.onCreateOptionsMenu(menu);
 		org.koboc.collect.android.utilities.CompatibilityUtils.setShowAsAction(
 				menu.add(0, MENU_PREFERENCES, 0, R.string.general_preferences)
-						.setIcon(R.drawable.settings),
+						.setIcon(R.drawable.ic_settings_black_24dp),
 				MenuItem.SHOW_AS_ACTION_ALWAYS);
 		return true;
 	}
@@ -265,13 +271,30 @@ public class LoginActivity extends Activity {
         private ProgressDialog pbarDialog;
 
         private void initPrefs() {
+
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+            loginUrl = prefs.getString(org.koboc.collect.android.preferences.PreferencesActivity.KEY_SERVER_URL, null);
+            if(!loginUrl.endsWith("/")) loginUrl += "/";
+            loginUrl += username.toString();
+            loginUrl += NetUtils.URL_PART_LOGIN;
+            loginUrl += "?";
+            List<NameValuePair> params = new LinkedList<NameValuePair>();
+            if(UserCollection.getInstance().getUserData().getUsername() != null)
+                params.add(new BasicNameValuePair("password", password.toString()));
+            String paramString = URLEncodedUtils.format(params, "utf-8");
+            loginUrl+= paramString;
+            Log.d(LoginActivity.class.getSimpleName(), "Login URL = " + loginUrl);
+            timeOut = org.koboc.collect.android.utilities.WebUtils.CONNECTION_TIMEOUT;
+        }
+
+  /*      private void initPrefs() {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
             loginUrl = prefs.getString(org.koboc.collect.android.preferences.PreferencesActivity.KEY_SERVER_URL, getString(R.string.default_server_url));
             if(!loginUrl.endsWith("/")) loginUrl += "/";
             loginUrl += NetUtils.URL_PART_LOGIN;
             timeOut = org.koboc.collect.android.utilities.WebUtils.CONNECTION_TIMEOUT;
-            //Log.i(ClientCollectionLoginActivity.class.getSimpleName(), "Login Url = " + loginUrl);
-        }
+            Log.i(LoginActivity.class.getSimpleName(), "Login Url = " + loginUrl);
+        }*/
 
         @Override
         protected void onPreExecute() {
@@ -292,7 +315,9 @@ public class LoginActivity extends Activity {
             }
 
             NetUtils.clearAllCredentials();
+            //Log.i("LOG",username+password);
             NetUtils.addCredentials(username, NetUtils.getSHA512(password));
+            Log.i("LOG",username+password);
 
             initPrefs();
             login();

@@ -100,7 +100,7 @@ public class question_status_list_Activity extends Activity {
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.case_status_row, parent, false);
             }
-           // Lookup view for data population
+            // Lookup view for data population
             TextView caseID = (TextView) convertView.findViewById(R.id.caseID);
             TextView caseName = (TextView) convertView.findViewById(R.id.casename);
             TextView caseStatus = (TextView) convertView.findViewById(R.id.casestatus);
@@ -127,6 +127,7 @@ public class question_status_list_Activity extends Activity {
             });
             // Return the completed view to render on screen
             return convertView;
+
         }
     }
 }
