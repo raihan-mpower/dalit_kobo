@@ -245,13 +245,13 @@ public class InstanceUploaderList extends ListActivity implements
                 showDialog(GOOGLE_USER_DIALOG);
                 return;
             }
-            Intent i = new Intent(this, GoogleSheetsUploaderActivity.class);
-            i.putExtra(FormEntryActivity.KEY_INSTANCES, instanceIDs);
+            Intent i = new Intent(this, org.koboc.collect.android.activities.GoogleSheetsUploaderActivity.class);
+            i.putExtra(org.koboc.collect.android.activities.FormEntryActivity.KEY_INSTANCES, instanceIDs);
             startActivityForResult(i, INSTANCE_UPLOADER);
         } else {
             // otherwise, do the normal agregate/other thing.
-            Intent i = new Intent(this, InstanceUploaderActivity.class);
-            i.putExtra(FormEntryActivity.KEY_INSTANCES, instanceIDs);
+            Intent i = new Intent(this, org.koboc.collect.android.activities.InstanceUploaderActivity.class);
+            i.putExtra(org.koboc.collect.android.activities.FormEntryActivity.KEY_INSTANCES, instanceIDs);
             startActivityForResult(i, INSTANCE_UPLOADER);
         }
     }
@@ -347,7 +347,7 @@ public class InstanceUploaderList extends ListActivity implements
 		switch (requestCode) {
 		// returns with a form path, start entry
 		case INSTANCE_UPLOADER:
-			if (intent.getBooleanExtra(FormEntryActivity.KEY_SUCCESS, false)) {
+			if (intent.getBooleanExtra(org.koboc.collect.android.activities.FormEntryActivity.KEY_SUCCESS, false)) {
 				mSelected.clear();
 				getListView().clearChoices();
 				if (mInstances.isEmpty()) {

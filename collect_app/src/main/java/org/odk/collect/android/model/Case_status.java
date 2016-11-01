@@ -1,5 +1,7 @@
 package org.odk.collect.android.model;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -83,6 +85,7 @@ public class Case_status
         }
     }
     public static ArrayList<Case_status> getCaseStatusList(String jsonArraytoconvert){
+        Log.d("LOG",jsonArraytoconvert.toString());
         ArrayList <Case_status> caseStatusList = new ArrayList<Case_status>();
         try {
             JSONArray jsonArray = new JSONArray(jsonArraytoconvert);
