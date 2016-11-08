@@ -288,7 +288,7 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		button10.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				callformactivity("সচরাচর জিজ্ঞাস্য প্রশ্ন", MainMenuActivity.this);
+				callformactivity("Frequently Asked Questions", MainMenuActivity.this);
 //        finish();
 			}
 		});

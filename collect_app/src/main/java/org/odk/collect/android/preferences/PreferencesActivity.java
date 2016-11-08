@@ -156,13 +156,13 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
     mProtocolSettings = (PreferenceScreen) findPreference(KEY_PROTOCOL_SETTINGS);
 
     boolean autosendWifiAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_AUTOSEND_WIFI, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_AUTOSEND_WIFI, true);
     if (!(autosendWifiAvailable || adminMode)) {
       autosendCategory.removePreference(mAutosendWifiPreference);
     }
 
     boolean autosendNetworkAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_AUTOSEND_NETWORK, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_AUTOSEND_NETWORK, true);
     if (!(autosendNetworkAvailable || adminMode)) {
       autosendCategory.removePreference(mAutosendNetworkPreference);
     }
@@ -177,13 +177,13 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
 
     if (mProtocolPreference.getValue().equals(getString(R.string.protocol_odk_default))) {
       setDefaultAggregatePaths();
-      prefIntent = new Intent(this, AggregatePreferencesActivity.class);
+      prefIntent = new Intent(this, org.koboc.collect.android.preferences.AggregatePreferencesActivity.class);
     } else if (mProtocolPreference.getValue().equals(
         getString(R.string.protocol_google_sheets))) {
-      prefIntent = new Intent(this, GooglePreferencesActivity.class);
+      prefIntent = new Intent(this, org.koboc.collect.android.preferences.GooglePreferencesActivity.class);
     } else {
       // other
-      prefIntent = new Intent(this, OtherPreferencesActivity.class);
+      prefIntent = new Intent(this, org.koboc.collect.android.preferences.OtherPreferencesActivity.class);
     }
     prefIntent.putExtra(INTENT_KEY_ADMIN_MODE, adminMode);
     mProtocolSettings.setIntent(prefIntent);
@@ -201,12 +201,12 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
         Intent prefIntent = null;
         if (value.equals(getString(R.string.protocol_odk_default))) {
           setDefaultAggregatePaths();
-          prefIntent = new Intent(PreferencesActivity.this, AggregatePreferencesActivity.class);
+          prefIntent = new Intent(PreferencesActivity.this, org.koboc.collect.android.preferences.AggregatePreferencesActivity.class);
         } else if (value.equals(getString(R.string.protocol_google_sheets))) {
-          prefIntent = new Intent(PreferencesActivity.this, GooglePreferencesActivity.class);
+          prefIntent = new Intent(PreferencesActivity.this, org.koboc.collect.android.preferences.GooglePreferencesActivity.class);
         } else {
           // other
-          prefIntent = new Intent(PreferencesActivity.this, OtherPreferencesActivity.class);
+          prefIntent = new Intent(PreferencesActivity.this, org.koboc.collect.android.preferences.OtherPreferencesActivity.class);
         }
         prefIntent.putExtra(INTENT_KEY_ADMIN_MODE, adminMode);
         mProtocolSettings.setIntent(prefIntent);
@@ -274,7 +274,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
     mUsernamePreference.getEditText().setFilters(new InputFilter[] { getReturnFilter() });
 
     boolean usernameAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_CHANGE_USERNAME, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_CHANGE_USERNAME, true);
     if (!(usernameAvailable || adminMode)) {
       serverCategory.removePreference(mUsernamePreference);
     }
@@ -298,13 +298,13 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
     mPasswordPreference.getEditText().setFilters(new InputFilter[] { getReturnFilter() });
 
     boolean passwordAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_CHANGE_PASSWORD, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_CHANGE_PASSWORD, true);
     if (!(passwordAvailable || adminMode)) {
       serverCategory.removePreference(mPasswordPreference);
     }
 
     boolean navigationAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_NAVIGATION, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_NAVIGATION, true);
     mNavigationPreference.setSummary(mNavigationPreference.getEntry());
     mNavigationPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 
@@ -321,7 +321,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
     }
 
     boolean constraintBehaviorAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_CONSTRAINT_BEHAVIOR, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_CONSTRAINT_BEHAVIOR, true);
     mConstraintBehaviorPreference.setSummary(mConstraintBehaviorPreference.getEntry());
     mConstraintBehaviorPreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 
@@ -338,7 +338,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
     }
 
     boolean fontAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_CHANGE_FONT_SIZE, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_CHANGE_FONT_SIZE, true);
     mFontSizePreference.setSummary(mFontSizePreference.getEntry());
     mFontSizePreference.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
 
@@ -355,20 +355,20 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
     }
 
     boolean defaultAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_DEFAULT_TO_FINALIZED, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_DEFAULT_TO_FINALIZED, true);
 
     if (!(defaultAvailable || adminMode)) {
       clientCategory.removePreference(defaultFinalized);
     }
 
     boolean deleteAfterAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_DELETE_AFTER_SEND, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_DELETE_AFTER_SEND, true);
     if (!(deleteAfterAvailable || adminMode)) {
       clientCategory.removePreference(deleteAfterSend);
     }
 
     boolean resolutionAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_HIGH_RESOLUTION, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_HIGH_RESOLUTION, true);
 
     Preference highResolution = findPreference(KEY_HIGH_RESOLUTION);
     if (!(resolutionAvailable || adminMode)) {
@@ -426,7 +426,7 @@ public class PreferencesActivity extends PreferenceActivity implements OnPrefere
         KEY_SPLASH_PATH, getString(R.string.default_splash_path)));
 
     boolean showSplashAvailable = adminPreferences.getBoolean(
-        AdminPreferencesActivity.KEY_SHOW_SPLASH_SCREEN, true);
+        org.koboc.collect.android.preferences.AdminPreferencesActivity.KEY_SHOW_SPLASH_SCREEN, true);
 
     CheckBoxPreference showSplashPreference = (CheckBoxPreference) findPreference(KEY_SHOW_SPLASH);
 
