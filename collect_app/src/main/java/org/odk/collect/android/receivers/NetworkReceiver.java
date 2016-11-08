@@ -16,6 +16,7 @@ import org.koboc.collect.android.provider.InstanceProviderAPI.InstanceColumns;
 import org.koboc.collect.android.tasks.GoogleSheetsAbstractUploader;
 import org.koboc.collect.android.tasks.InstanceUploaderTask;
 import org.koboc.collect.android.utilities.WebUtils;
+import org.odk.collect.android.utilities.UserCollection;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -31,6 +32,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.google.android.gms.auth.GoogleAuthException;
 import com.google.android.gms.auth.GooglePlayServicesAvailabilityException;
@@ -156,6 +158,7 @@ public class NetworkReceiver extends BroadcastReceiver implements InstanceUpload
                 String url = server
                         + settings.getString(PreferencesActivity.KEY_FORMLIST_URL,
                                 context.getString(R.string.default_odk_formlist));
+                Log.d("LOG",url);
 
                 Uri u = Uri.parse(url);
                 WebUtils.addCredentials(storedUsername, storedPassword, u.getHost());

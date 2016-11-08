@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +49,11 @@ import java.util.ArrayList;
  * Created by raihan on 9/29/16.
  */
 
+//Modified by Sabbir
+
 public class question_status_list_Activity extends Activity {
+    private static final String CASE_STATUS_URL="/get/caid_rprt_list";
+    private static final String SERVER_URL="http://ca.mpower-social.com:8003/";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +64,14 @@ public class question_status_list_Activity extends Activity {
             ArrayList<Case_status> case_statuses;
             @Override
             protected Object doInBackground(Object[] params) {
+                SharedPreferences settings =
+                        PreferenceManager.getDefaultSharedPreferences(Collect.getInstance().getBaseContext());
                 HttpClient httpclient = new DefaultHttpClient();
                 try {
-                    HttpResponse response = httpclient.execute(new HttpGet("http://ctpi.mpower-social.com:8003/caidadmin/get/caid_rprt_list"));
+                    String storedUsername = settings.getString(org.koboc.collect.android.preferences.PreferencesActivity.KEY_USERNAME, null);
+                    String URL=SERVER_URL+storedUsername+CASE_STATUS_URL;
+                    Log.d("LOG",URL);
+                    HttpResponse response = httpclient.execute(new HttpGet(URL));
                     StatusLine statusLine = response.getStatusLine();
                     if (statusLine.getStatusCode() == HttpStatus.SC_OK) {
                         InputStream inputStream;

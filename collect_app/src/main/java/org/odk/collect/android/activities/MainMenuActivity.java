@@ -832,7 +832,7 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 			File file2 = new File(Environment.getExternalStorageDirectory() + "/odk/forms/সচর চর জ জ ঞ স য প রশ ন.xml");
 
 
-			Log.v("return bool", "" + (file.exists() && file2.exists()));
+			Log.v("LOGF", "" + (file.exists() && file2.exists()));
 
 			return file.exists() && file2.exists();
 		}catch (Exception e){
@@ -880,7 +880,7 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		mDownloadFormListTask = null;
 
 		if (result == null) {
-			Log.e(t, "Formlist Downloading returned null.  That shouldn't happen");
+			Log.d(t, "Formlist Downloading returned null.  That shouldn't happen");
 			// Just displayes "error occured" to the user, but this should never happen.
 //	            createAlertDialog(getString(R.string.load_remote_form_error),
 //	                getString(R.string.error_occured), EXIT);

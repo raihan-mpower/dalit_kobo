@@ -613,7 +613,7 @@ public class InstanceUploaderTask extends AsyncTask<Long, Integer, InstanceUploa
                                     Collect.getInstance().getApplicationContext()).getBoolean(
                                     PreferencesActivity.KEY_DELETE_AFTER_SEND, false);
                             if (deleteFlag) {
-                                DeleteInstancesTask dit = new DeleteInstancesTask();
+                                org.koboc.collect.android.tasks.DeleteInstancesTask dit = new org.koboc.collect.android.tasks.DeleteInstancesTask();
                                 dit.setContentResolver(Collect.getInstance().getContentResolver());
                                 dit.execute(toDelete);
                             }

@@ -15,7 +15,7 @@
     <string translatable="false" name="protocol_other">other_protocol</string>
 	<string translatable="false" name="default_username">caidadmin</string>
 	<string translatable="false" name="default_password">12345678</string>
-	<string translatable="false" name="default_server_url">http://ctpi.mpower-social.com:8003/</string>
+	<string translatable="false" name="default_server_url">http://ca.mpower-social.com:8003/</string>
 	<string translatable="false" name="default_odk_formlist">/m/formList</string>
 	<string translatable="false" name="default_odk_submission">/submission</string>
     <item name="mapview" type="id"/>

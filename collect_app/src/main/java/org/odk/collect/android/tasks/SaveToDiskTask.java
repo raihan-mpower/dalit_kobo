@@ -46,7 +46,7 @@ import android.util.Log;
  * @author Carl Hartung (carlhartung@gmail.com)
  * @author Yaw Anokwa (yanokwa@gmail.com)
  */
-public class SaveToDiskTask extends AsyncTask<Void, String, SaveResult> {
+public class SaveToDiskTask extends AsyncTask<Void, String, org.koboc.collect.android.tasks.SaveResult> {
     private final static String t = "SaveToDiskTask";
 
     private FormSavedListener mSavedListener;

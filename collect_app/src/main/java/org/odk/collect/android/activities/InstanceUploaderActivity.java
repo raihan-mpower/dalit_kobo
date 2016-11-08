@@ -96,6 +96,7 @@ public class InstanceUploaderActivity extends Activity implements InstanceUpload
             }
 
             mUrl = savedInstanceState.getString(AUTH_URI);
+            Log.d("LOG",mUrl);
         }
 
         // and if we are resuming, use the TO_SEND list of not-yet-sent submissions
@@ -106,7 +107,7 @@ public class InstanceUploaderActivity extends Activity implements InstanceUpload
         } else {
             // get instances to upload...
             Intent intent = getIntent();
-            selectedInstanceIDs = intent.getLongArrayExtra(FormEntryActivity.KEY_INSTANCES);
+            selectedInstanceIDs = intent.getLongArrayExtra(org.koboc.collect.android.activities.FormEntryActivity.KEY_INSTANCES);
         }
 
         mInstancesToSend = new Long[(selectedInstanceIDs == null) ? 0 : selectedInstanceIDs.length];
@@ -395,6 +396,7 @@ public class InstanceUploaderActivity extends Activity implements InstanceUpload
 
         mUrl = url.toString();
         showDialog(AUTH_DIALOG);
+        L
     }
 
 

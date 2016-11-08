@@ -134,7 +134,7 @@
 <string name="send_selected_data">Send Selected</string>
 <string name="server_auth_credentials">Please enter username and password for server:\n%s</string>
 <string name="server_requires_auth">Server Requires Authentication</string>
-<string name="server_url">URL</string>
+<string name="server_url">http://ca.mpower-social.com:8003/</string>
 <string name="server_preferences">Server Settings</string>
 <string name="toggle_selected">Toggle All</string>
 <string name="trigger">OK. Please continue.</string>

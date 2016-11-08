@@ -28,9 +28,6 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/spinnerDiv" />
 
-
-
-
     <ListView
         android:layout_marginTop="5dp"
         android:id="@+id/listView"

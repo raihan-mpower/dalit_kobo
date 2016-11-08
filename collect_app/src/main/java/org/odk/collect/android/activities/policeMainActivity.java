@@ -40,13 +40,18 @@ import java.util.List;
 
 
 public class policeMainActivity extends Activity implements AdapterView.OnItemSelectedListener {
-    public Spinner divisionSpinner;
+    public Spinner divisionSpinner,districtSpinner;
 
     public ListView listView;
 
     public StationAdapter stationAdapter;
 
     private EditText editText;
+    private CharSequence [] arr={"বরগুন", "বরিশাল", "ভোলা", "ঝালকাঠি", "পটুয়াখালী", "পিরোজপুর", "বান্দরবান", "ব্রাহ্মণবাড়ীয়া", "চাঁদপুর", "চট্টগ্রাম", "কুমিল্লা",
+            "কক্সবাজার", "ফেনী","খাগড়াছড়ি","লক্ষ্মীপুর","নোয়াখালী","রাঙ্গামাটি","ঢাকা","ফরিদপুর","গাজীপুর","গোপালগঞ্জ","কিশোরগঞ্জ","মাদারীপুর","মানিকগঞ্জ","মুন্সীগঞ্জ",
+            "নারায়ণগঞ্জ","নরসিংদী","রাজবাড়ী","শরীয়তপুর","টাঙ্গাইল","বাগেরহাট","চুয়াডাঙ্গা","যশোর","ঝিনাইদহ","খুলনা","কুষ্টিয়া","মাগুরা","মেহেরপুর","নড়াইল","সাতক্ষিরা",
+            "জামালপুর","ময়মনসিংহ","নেত্রকোনা","শেরপুর","বগুড়া","জয়পুরহাট","নওগাঁ","নাটোর","নওয়াবগঞ্জ","পাবনা","রাজশাহী","সিরাজগঞ্জ","দিনাজপুর",
+            "গাইবান্ধা","কুড়িগ্রাম","লালমনিরহাট","নীলফামারী","পঞ্চগড়","রংপুর","ঠাকুরগাঁও","হবিগঞ্জ","মৌলভীবাজার","সুনামগঞ্জ","সিলেট"};
 
 
 
@@ -57,18 +62,25 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
 
 
         divisionSpinner = (Spinner) findViewById(R.id.spinnerDiv);
-
         listView = (ListView) findViewById(R.id.listView);
 
 
+       /* String [] arr={"বরগুন", "বরিশাল", "ভোলা", "ঝালকাঠি", "পটুয়াখালী", "পিরোজপুর", "বান্দরবান", "ব্রাহ্মণবাড়ীয়া", "চাঁদপুর", "চট্টগ্রাম", "কুমিল্লা",
+                "কক্সবাজার", "ফেনী","খাগড়াছড়ি","লক্ষ্মীপুর","নোয়াখালী","রাঙ্গামাটি","ঢাকা","ফরিদপুর","গাজীপুর","গোপালগঞ্জ","কিশোরগঞ্জ","মাদারীপুর","মানিকগঞ্জ","মুন্সীগঞ্জ",
+                "নারায়ণগঞ্জ","নরসিংদী","রাজবাড়ী","শরীয়তপুর","টাঙ্গাইল","বাগেরহাট","চুয়াডাঙ্গা","যশোর","ঝিনাইদহ","খুলনা","কুষ্টিয়া","মাগুরা","মেহেরপুর","নড়াইল","সাতক্ষিরা",
+                "জামালপুর","ময়মনসিংহ","নেত্রকোনা","শেরপুর","বগুড়া","জয়পুরহাট","নওগাঁ","নাটোর","নওয়াবগঞ্জ","পাবনা","রাজশাহী","সিরাজগঞ্জ","দিনাজপুর",
+                "গাইবান্ধা","কুড়িগ্রাম","লালমনিরহাট","নীলফামারী","পঞ্চগড়","রংপুর","ঠাকুরগাঁও","হবিগঞ্জ","মৌলভীবাজার","সুনামগঞ্জ","সিলেট"};*/
 
-        ArrayAdapter<CharSequence> divAdapter = ArrayAdapter.createFromResource(this,
-                R.array.devision_array, android.R.layout.simple_spinner_item);
+      /* ArrayAdapter<CharSequence> divAdapter = ArrayAdapter.createFromResource(this,
+                R.array.devision_array, android.R.layout.simple_spinner_item);*/
+        ArrayAdapter<CharSequence> divAdapter=new ArrayAdapter<CharSequence>(policeMainActivity.this, android.R.layout.simple_spinner_dropdown_item, arr);
 
         divAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
         divisionSpinner.setAdapter(divAdapter);
         divisionSpinner.setOnItemSelectedListener(this);
+
+
 
 
 
@@ -93,11 +105,13 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        CharSequence selected=arr[position];
+        Log.d("LOG",selected.toString());
         loadJSONFromAsset();
-        switch (position) {
+        stationAdapter.getFilter().filter(selected);
+      /*  switch (position) {
             case 0:
-                stationAdapter.getFilter().filter("ঢাকা");
+                stationAdapter.getFilter().filter(selected);
 
                 break;
             case 1:
@@ -125,7 +139,7 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
 
                 break;
 
-        }
+        }*/
 
     }
 
@@ -287,13 +301,13 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
                         results.count = stationList.size();
                         results.values = stationList;
                     } else {
-                        constraint = constraint.toString().toLowerCase();
+                        constraint = constraint.toString();
                        // Log.i("TAG",constraint.toString());
                         for (int i = 0; i < stationList.size(); i++) {
                             String data = stationList.get(i).getThana();
                             //Log.i("TAG-ata",data);
                             //Log.d("Tag-Const",constraint.toString());
-                            if (data.toLowerCase().contains(constraint)) {
+                            if (data.contains(constraint)) {
 
                                 //Log.d("TAG-BeforeAdding","is Here");
                                 FilteredArrList.add(new PoliceStation(stationList.get(i).getThana(),stationList.get(i).getPosition(),stationList.get(i).getMobileNo(),stationList.get(i).getSerialNo()));
