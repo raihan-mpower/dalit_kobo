@@ -396,7 +396,6 @@ public class InstanceUploaderActivity extends Activity implements InstanceUpload
 
         mUrl = url.toString();
         showDialog(AUTH_DIALOG);
-        L
     }
 
 

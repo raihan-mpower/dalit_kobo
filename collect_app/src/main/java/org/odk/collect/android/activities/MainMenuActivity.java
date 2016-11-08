@@ -829,7 +829,7 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		// TODO Auto-generated method stub
 		try {
 			File file = new File(Environment.getExternalStorageDirectory() + "/odk/forms/ICT for Dalit Right.xml");
-			File file2 = new File(Environment.getExternalStorageDirectory() + "/odk/forms/সচর চর জ জ ঞ স য প রশ ন.xml");
+			File file2 = new File(Environment.getExternalStorageDirectory() + "/odk/forms/Frequently Asked Questions.xml");
 
 
 			Log.v("LOGF", "" + (file.exists() && file2.exists()));
