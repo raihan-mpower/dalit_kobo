@@ -151,43 +151,43 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				if(!checkformexists()){
-					copyFolder("forms","");
-					File folder = new File(Environment.getExternalStorageDirectory() +"/odk/forms/"+
-							File.separator + "ICT for Dalit Right-media");
-					boolean success = true;
-					if (!folder.exists()) {
-						success = folder.mkdirs();
-					}
-					if (success) {
-						try {
-							AssetManager assetManager = getAssets();
-							InputStream in = null;
-							OutputStream out = null;
-							// Do something on success
-							in = assetManager.open("forms/ICT for Dalit Right-media/" + "itemsets.csv");
-
-							out = new FileOutputStream(Environment.getExternalStorageDirectory() + "/odk/forms/ICT for Dalit Right-media/" + "itemsets.csv");
-
-							copyFile(in, out);
-						}catch (Exception e){
-
-						}
-
-					} else {
-						// Do something else on failure
-					}
-
-					if (mDiskSyncTask == null) {
-						mProgressDialog = new ProgressDialog(MainMenuActivity.this);
-						mProgressDialog.setTitle("processing disk for forms please wait");
-						mProgressDialog.show();
-						Log.i(t, "Starting new disk sync task");
-						mDiskSyncTask = new DiskSyncTask();
-						mDiskSyncTask.setDiskSyncListener(MainMenuActivity.this);
-						mDiskSyncTask.execute((Void[]) null);
-					}
-				}
+//				if(!checkformexists()){
+//					copyFolder("forms","");
+//					File folder = new File(Environment.getExternalStorageDirectory() +"/odk/forms/"+
+//							File.separator + "ICT for Dalit Right-media");
+//					boolean success = true;
+//					if (!folder.exists()) {
+//						success = folder.mkdirs();
+//					}
+//					if (success) {
+//						try {
+//							AssetManager assetManager = getAssets();
+//							InputStream in = null;
+//							OutputStream out = null;
+//							// Do something on success
+//							in = assetManager.open("forms/ICT for Dalit Right-media/" + "itemsets.csv");
+//
+//							out = new FileOutputStream(Environment.getExternalStorageDirectory() + "/odk/forms/ICT for Dalit Right-media/" + "itemsets.csv");
+//
+//							copyFile(in, out);
+//						}catch (Exception e){
+//
+//						}
+//
+//					} else {
+//						// Do something else on failure
+//					}
+//
+//					if (mDiskSyncTask == null) {
+//						mProgressDialog = new ProgressDialog(MainMenuActivity.this);
+//						mProgressDialog.setTitle("processing disk for forms please wait");
+//						mProgressDialog.show();
+//						Log.i(t, "Starting new disk sync task");
+//						mDiskSyncTask = new DiskSyncTask();
+//						mDiskSyncTask.setDiskSyncListener(MainMenuActivity.this);
+//						mDiskSyncTask.execute((Void[]) null);
+//					}
+//				}
 				callformactivity("ICT_for_Dalit_Right", MainMenuActivity.this);
 
 

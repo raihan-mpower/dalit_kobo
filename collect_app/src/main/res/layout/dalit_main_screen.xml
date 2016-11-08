@@ -21,6 +21,13 @@
                 android:text="নতুন অভিযোগ দায়ের" />
 
             <Button
+                android:text="ফর্ম প্রেরণ করুন "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button11"
+                android:layout_weight="1" />
+
+            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button2"
@@ -36,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button4"
-                android:text="নিকটস্থ আইন সহায়তা সংস্থা " />
+                android:text="দলিত মানবাধিকার সংস্থা" />
 
             <Button
                 android:text="আইন সংক্রান্ত প্রয়োজনীয় তথ্য"
@@ -60,25 +67,20 @@
                 android:text="সরকারী সেবা প্রাপ্তিস্থান"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button8" />
+                android:id="@+id/button8"
+                android:visibility="gone" />
 
             <Button
-                android:text="দলিত মানবাধিকার সংস্থা"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button9" />
+                android:id="@+id/button9"
+                android:text="নিকটস্থ আইন সহায়তা সংস্থা" />
 
             <Button
                 android:text="সচরাচর জিজ্ঞাসা প্রশ্ন"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button10"
-                android:layout_weight="1" />
-            <Button
-                android:text="ফর্ম পাঠান"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/button11"
                 android:layout_weight="1" />
         </LinearLayout>
     </ScrollView>
