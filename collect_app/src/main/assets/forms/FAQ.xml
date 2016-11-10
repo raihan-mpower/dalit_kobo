@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <h:head>
-    <h:title>সচরাচর জিজ্ঞাস্য প্রশ্ন</h:title>
+    <h:title>Frequently Asked Questions</h:title>
     <model>
       <instance>
         <faq id="FAQ">
@@ -9,16 +9,20 @@
             <uuid/>
           </formhub>
           <faq/>
+          <name/>
+          <mobile/>
           <username/>
           <meta>
             <instanceID/>
           </meta>
         </faq>
       </instance>
-      <bind nodeset="/faq/faq" type="string"/>
+      <bind nodeset="/faq/faq" required="true()" type="string"/>
+      <bind nodeset="/faq/name" required="true()" type="string"/>
+      <bind constraint="regex(., '^[0-9]{11}$')" jr:constraintMsg="দয়া করে ১১ ডিজিট প্রবেশ করুন" nodeset="/faq/mobile" required="true()" type="string"/>
       <bind jr:preload="property" jr:preloadParams="username" nodeset="/faq/username" type="string"/>
       <bind calculate="concat('uuid:', uuid())" nodeset="/faq/meta/instanceID" readonly="true()" type="string"/>
-      <bind calculate="'6a047c9cc4a64f389b99e22e29a3309a'" nodeset="/faq/formhub/uuid" type="string"/>
+      <bind calculate="'c0b2caacc61b480c8a1fca80c849b315'" nodeset="/faq/formhub/uuid" type="string"/>
     </model>
   </h:head>
   <h:body>
@@ -26,6 +30,12 @@
       <label>সচরাচর জিজ্ঞাস্য প্রশ্ন-
 
 বক্সে আপনার প্রশ্ন লিখে প্রেরণ চিহ্নিত বোতাম চাপুন</label>
+    </input>
+    <input ref="/faq/name">
+      <label>তথ্য প্রদানকারীর নাম</label>
+    </input>
+    <input appearance="numbers" ref="/faq/mobile">
+      <label>তথ্য প্রদানকারীর মোবাইল</label>
     </input>
   </h:body>
 </h:html>

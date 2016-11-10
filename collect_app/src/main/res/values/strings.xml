@@ -11,7 +11,7 @@
 		License.
 --><resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 <string name="divison_prompt">Choose Division</string>
-<string name="district_prompt">Choose District</string>
+<string name="district_prompt">জেলা সিলেক্ট করুন</string>
 <string name="accept_location">Record Location</string>
 <string name="accuracy">Accuracy</string>
 <string name="activity_not_found">No activity found to handle: %s</string>

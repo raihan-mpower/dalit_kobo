@@ -2,6 +2,8 @@ package org.odk.collect.android.model;
 
 import android.util.Log;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,12 +17,23 @@ import java.util.ArrayList;
 public class Case_status
 {
     private String case_status_details;
-
+    //We will use case_name as Victim Name
+    @SerializedName("victim_name")
     private String case_name;
-
+@SerializedName("submission_id")
     private String case_id;
-
+@SerializedName("valid_status")
     private String case_status;
+@SerializedName("note")
+    private String note;
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 
     public String getCase_status_details ()
     {

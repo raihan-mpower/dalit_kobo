@@ -128,6 +128,7 @@ public class question_status_list_Activity extends Activity {
                     adapter.notifyDataSetChanged();
 
 
+
             }
         }).execute();
           // now it will not fail here
@@ -191,15 +192,14 @@ public class question_status_list_Activity extends Activity {
             holder.tvCaseStatus.setText(statuses.get(position).getCase_status());
 
 
-            /*
-            holder.tvCaseID.setText(user.getCase_id());
+            /*holder.tvCaseID.setText(user.getCase_id());
             holder.tvCaseName.setText(user.getCase_name());
-            holder.tvCaseStatus.setText(user.getCase_status());
+            holder.tvCaseStatus.setText(user.getCase_status());*/
             holder.tvCaseStatus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(question_status_list_Activity.this);
-                    builder.setMessage(statuses.get(position).getCase_status_details())
+                    builder.setMessage(statuses.get(position).getNote())
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
@@ -208,10 +208,10 @@ public class question_status_list_Activity extends Activity {
                                 }
                             });
                     AlertDialog alert = builder.create();
-                    alert.setTitle("Case Status");
+                    alert.setTitle("Note");
                     alert.show();
                 }
-            });*/
+            });
             // Return the completed view to render on screen
             return convertView;
 

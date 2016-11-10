@@ -146,49 +146,56 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		editor.putBoolean(AdminPreferencesActivity.KEY_AUTOSEND_NETWORK, true);
 		editor.commit();
 
+		//downloadFormList(); // Creates a never ending loop :P
+
 
 		Button button = (Button)findViewById(R.id.button1);
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				if(!checkformexists()){
-//					copyFolder("forms","");
-//					File folder = new File(Environment.getExternalStorageDirectory() +"/odk/forms/"+
-//							File.separator + "ICT for Dalit Right-media");
-//					boolean success = true;
-//					if (!folder.exists()) {
-//						success = folder.mkdirs();
-//					}
-//					if (success) {
-//						try {
-//							AssetManager assetManager = getAssets();
-//							InputStream in = null;
-//							OutputStream out = null;
-//							// Do something on success
-//							in = assetManager.open("forms/ICT for Dalit Right-media/" + "itemsets.csv");
-//
-//							out = new FileOutputStream(Environment.getExternalStorageDirectory() + "/odk/forms/ICT for Dalit Right-media/" + "itemsets.csv");
-//
-//							copyFile(in, out);
-//						}catch (Exception e){
-//
-//						}
-//
-//					} else {
-//						// Do something else on failure
-//					}
-//
-//					if (mDiskSyncTask == null) {
-//						mProgressDialog = new ProgressDialog(MainMenuActivity.this);
-//						mProgressDialog.setTitle("processing disk for forms please wait");
-//						mProgressDialog.show();
-//						Log.i(t, "Starting new disk sync task");
-//						mDiskSyncTask = new DiskSyncTask();
-//						mDiskSyncTask.setDiskSyncListener(MainMenuActivity.this);
-//						mDiskSyncTask.execute((Void[]) null);
-//					}
-//				}
-				callformactivity("ICT_for_Dalit_Right", MainMenuActivity.this);
+			if(!checkformexists()) {
+
+					copyFolder("forms","/odk/forms");
+				File folder = new File(Environment.getExternalStorageDirectory() +"/odk/forms/"+
+						File.separator + "ICT for Dalit Right-media");
+					boolean success = true;
+					if (!folder.exists()) {
+						success = folder.mkdirs();
+					}
+					if (success) {
+						try {
+
+							AssetManager assetManager = getAssets();
+							InputStream in = null;
+							OutputStream out = null;
+							// Do something on success
+							in = assetManager.open("forms/ICT for Dalit Right-media/" + "itemsets.csv");
+
+							out = new FileOutputStream(Environment.getExternalStorageDirectory() + "/odk/forms/ICT for Dalit Right-media/" + "itemsets.csv");
+
+							copyFile(in, out);
+						}catch (Exception e){
+
+						}
+
+					} else {
+						// Do something else on failure
+					}
+
+					if (mDiskSyncTask == null) {
+						mProgressDialog = new ProgressDialog(MainMenuActivity.this);
+						mProgressDialog.setTitle("processing disk for forms please wait");
+						mProgressDialog.show();
+						Log.i(t, "Starting new disk sync task");
+						mDiskSyncTask = new DiskSyncTask();
+						mDiskSyncTask.setDiskSyncListener(MainMenuActivity.this);
+						mDiskSyncTask.execute((Void[]) null);
+					}
+				}
+
+				callformactivity("ICT for Dalit Right", MainMenuActivity.this);
+
+
 
 
 //        finish();
@@ -239,7 +246,9 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 //        finish();
 			}
 		});
-		Button button6 = (Button)findViewById(R.id.button6);
+
+
+		/*Button button6 = (Button)findViewById(R.id.button6);
 
 		button6.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -250,6 +259,8 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 //        finish();
 			}
 		});
+		*/
+
 		Button button7 = (Button)findViewById(R.id.button7);
 
 		button7.setOnClickListener(new View.OnClickListener() {
@@ -288,7 +299,9 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 		button10.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				callformactivity("Frequently Asked Questions", MainMenuActivity.this);
+
+					callformactivity("Frequently Asked Questions", MainMenuActivity.this);
+
 //        finish();
 			}
 		});
@@ -982,33 +995,53 @@ public class MainMenuActivity extends Activity implements DiskSyncListener, Form
 
 	public void callformactivity(String formname,Context con){
 
-			long idFormsTable = 3;
+		Log.d("LOG",formname);
+			long idFormsTable=3;
 			String sortOrder = FormsColumns.DISPLAY_NAME + " ASC, " + FormsColumns.JR_VERSION + " DESC";
+		//Cursor c=getContentResolver().query(FormsColumns.CONTENT_URI, sortOrder,null,null,null);
 			Cursor c = ((Activity) con).managedQuery(FormsColumns.CONTENT_URI, null, null, null, sortOrder);
 			c.moveToFirst();
+			HashMap<String,Long> formnameIdMap = new HashMap<String,Long>();
 			while (c.isAfterLast() == false) {
+				String displayname = "";
+				long id = 0;
 				for (int i = 0; i < c.getColumnNames().length; i++) {
 					if (c.getColumnName(i).equalsIgnoreCase("displayName")) {
-						if (c.getString(i).equalsIgnoreCase(formname)) {
-							c.moveToLast();
-						}
+						displayname = c.getString(i);
+
+//						if (c.getString(i).equalsIgnoreCase(formname)) {
+//							c.moveToLast();
+//							/*idFormsTable = Long.parseLong(c.getString(i));*/
+//
+//						}
 					}
 					if (c.getColumnName(i).equalsIgnoreCase("_id")) {
 						idFormsTable = Long.parseLong(c.getString(i));
+						id = idFormsTable;
 					}
 				}
+				formnameIdMap.put(displayname,id);
 				c.moveToNext();
 			}
-			Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, idFormsTable);
-			Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
-			String action = ((Activity) con).getIntent().getAction();
-			if (Intent.ACTION_PICK.equals(action)) {
-				// caller is waiting on a picked form
-				((Activity) con).setResult(Activity.RESULT_OK, new Intent().setData(formUri));
-			} else {
-				// caller wants to view/edit a form, so launch formentryactivity
-				startActivity(new Intent(Intent.ACTION_EDIT, formUri));
+//			Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, idFormsTable);
+ 			Uri formUri = ContentUris.withAppendedId(FormsColumns.CONTENT_URI, formnameIdMap.get(formname));
+			try {
+				Log.d("LOG", Long.toString(idFormsTable));
+				Collect.getInstance().getActivityLogger().logAction(this, "onListItemClick", formUri.toString());
+				String action = ((Activity) con).getIntent().getAction();
+				if (Intent.ACTION_PICK.equals(action)) {
+					// caller is waiting on a picked form
+					Log.d("LOG", formUri.toString());
+					((Activity) con).setResult(Activity.RESULT_OK, new Intent().setData(formUri));
+				} else {
+					// caller wants to view/edit a form, so launch formentryactivity
+					Log.d("LOG", formUri.toString());
+					startActivity(new Intent(Intent.ACTION_EDIT, formUri));
+				}
+			}catch (Exception e){
+				Toast.makeText(this,"Form Not found",Toast.LENGTH_LONG).show();
 			}
+
 //				((Activity) con).finish();
 
 

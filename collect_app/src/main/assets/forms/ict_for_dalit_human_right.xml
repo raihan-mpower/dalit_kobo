@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <h:head>
-    <h:title>ICT_for_Dalit_Right</h:title>
+    <h:title>ICT for Dalit Right</h:title>
     <model>
       <instance>
-        <ict_for_dalit_human_right_v3 id="ict_for_dalit_human_right">
+        <ict_for_dalit_human_right_v4 id="ict_for_dalit_human_right">
           <formhub>
             <uuid/>
           </formhub>
@@ -31,7 +31,9 @@
           </victim_address>
           <victim_contactInfo/>
           <accused_name/>
-          <accused_cast/>
+          <accused_castRelig/>
+          <accused_dalit/>
+          <accused_religion/>
           <other_accused_cast_name/>
           <accused_address>
             <Division_accused/>
@@ -47,52 +49,56 @@
           <informer_name/>
           <informer_contactinfo/>
           <GPS/>
+          <picture/>
           <username/>
           <meta>
             <instanceID/>
           </meta>
-        </ict_for_dalit_human_right_v3>
+        </ict_for_dalit_human_right_v4>
       </instance>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_type" required="true()" type="select1"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/other_event_name" relevant=" /ict_for_dalit_human_right_v3/event_type  = '12'" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_date_time" required="true()" type="dateTime"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_place/Division_event" required="true()" type="select1"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_place/District_event" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_place/Upazila_event" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_place/Union_event" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_place/Village_event" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_name" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_cast" required="true()" type="select1"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/other_victim_cast_name" relevant=" /ict_for_dalit_human_right_v3/victim_cast  = '26'" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/damage_details" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_address/Division_victim" required="true()" type="select1"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_address/District_victim" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_address/Upazila_victim" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_address/Union_victim" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_address/Village_victim" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/victim_contactInfo" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_name" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_cast" type="select1"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/other_accused_cast_name" relevant=" /ict_for_dalit_human_right_v3/accused_cast  = '26'" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_address/Division_accused" type="select1"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_address/District_accused" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_address/Upazila_accused" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_address/Union_accused" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_address/Village_accused" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/accused_contactInfo" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/event_details" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/step_taken" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/current_situation" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/informer_name" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/informer_contactinfo" required="true()" type="string"/>
-      <bind nodeset="/ict_for_dalit_human_right_v3/GPS" type="geopoint"/>
-      <bind jr:preload="property" jr:preloadParams="username" nodeset="/ict_for_dalit_human_right_v3/username" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/ict_for_dalit_human_right_v3/meta/instanceID" readonly="true()" type="string"/>
-      <bind calculate="'8f51dcfb7f2146209dbb90f377a71750'" nodeset="/ict_for_dalit_human_right_v3/formhub/uuid" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_type" required="true()" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/other_event_name" relevant=" /ict_for_dalit_human_right_v4/event_type  = '12'" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_date_time" required="true()" type="dateTime"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_place/Division_event" required="true()" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_place/District_event" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_place/Upazila_event" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_place/Union_event" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_place/Village_event" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/victim_name" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/victim_cast" required="true()" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/other_victim_cast_name" relevant=" /ict_for_dalit_human_right_v4/victim_cast  = '26'" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/damage_details" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/victim_address/Division_victim" required="true()" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/victim_address/District_victim" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/victim_address/Upazila_victim" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/victim_address/Union_victim" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/victim_address/Village_victim" required="true()" type="string"/>
+      <bind constraint="regex(., '^[0-9]{11}$')" jr:constraintMsg="দয়া করে ১১ ডিজিট প্রবেশ করুন" nodeset="/ict_for_dalit_human_right_v4/victim_contactInfo" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_name" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_castRelig" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_dalit" relevant=" /ict_for_dalit_human_right_v4/accused_castRelig  = '1'" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_religion" relevant=" /ict_for_dalit_human_right_v4/accused_castRelig  = '2'" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/other_accused_cast_name" relevant=" /ict_for_dalit_human_right_v4/accused_castRelig  = '3'" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_address/Division_accused" type="select1"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_address/District_accused" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_address/Upazila_accused" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_address/Union_accused" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/accused_address/Village_accused" type="string"/>
+      <bind constraint="regex(., '^[0-9]{11}$')" jr:constraintMsg="দয়া করে ১১ ডিজিট প্রবেশ করুন" nodeset="/ict_for_dalit_human_right_v4/accused_contactInfo" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/event_details" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/step_taken" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/current_situation" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/informer_name" required="true()" type="string"/>
+      <bind constraint="regex(., '^[0-9]{11}$')" jr:constraintMsg="দয়া করে ১১ ডিজিট প্রবেশ করুন" nodeset="/ict_for_dalit_human_right_v4/informer_contactinfo" required="true()" type="string"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/GPS" type="geopoint"/>
+      <bind nodeset="/ict_for_dalit_human_right_v4/picture" type="binary"/>
+      <bind jr:preload="property" jr:preloadParams="username" nodeset="/ict_for_dalit_human_right_v4/username" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/ict_for_dalit_human_right_v4/meta/instanceID" readonly="true()" type="string"/>
+      <bind calculate="'6815304a2b5e4d35939d3d31a6b57b22'" nodeset="/ict_for_dalit_human_right_v4/formhub/uuid" type="string"/>
     </model>
   </h:head>
   <h:body>
-    <select1 ref="/ict_for_dalit_human_right_v3/event_type">
+    <select1 ref="/ict_for_dalit_human_right_v4/event_type">
       <label>ঘটনার ধরন</label>
       <item>
         <label>জমি/ভূমি দখল</label>
@@ -143,15 +149,15 @@
         <value>12</value>
       </item>
     </select1>
-    <input ref="/ict_for_dalit_human_right_v3/other_event_name">
+    <input ref="/ict_for_dalit_human_right_v4/other_event_name">
       <label>অন্যান্য</label>
     </input>
-    <input appearance="no-calendar" ref="/ict_for_dalit_human_right_v3/event_date_time">
+    <input appearance="no-calendar" ref="/ict_for_dalit_human_right_v4/event_date_time">
       <label>ঘটনার তারিখ</label>
     </input>
-    <group ref="/ict_for_dalit_human_right_v3/event_place">
+    <group ref="/ict_for_dalit_human_right_v4/event_place">
       <label>ঘটনার স্থান</label>
-      <select1 ref="/ict_for_dalit_human_right_v3/event_place/Division_event">
+      <select1 ref="/ict_for_dalit_human_right_v4/event_place/Division_event">
         <label>বিভাগ</label>
         <item>
           <label>BARISAL</label>
@@ -182,23 +188,23 @@
           <value>60</value>
         </item>
       </select1>
-      <input query="instance('District_event')/root/item[Division_event =  /ict_for_dalit_human_right_v3/event_place/Division_event ]" ref="/ict_for_dalit_human_right_v3/event_place/District_event">
+      <input query="instance('District_event')/root/item[Division_event =  /ict_for_dalit_human_right_v4/event_place/Division_event ]" ref="/ict_for_dalit_human_right_v4/event_place/District_event">
         <label>জেলা</label>
       </input>
-      <input query="instance('Upazila_event')/root/item[Division_event =  /ict_for_dalit_human_right_v3/event_place/Division_event  and District_event =  /ict_for_dalit_human_right_v3/event_place/District_event ]" ref="/ict_for_dalit_human_right_v3/event_place/Upazila_event">
+      <input query="instance('Upazila_event')/root/item[Division_event =  /ict_for_dalit_human_right_v4/event_place/Division_event  and District_event =  /ict_for_dalit_human_right_v4/event_place/District_event ]" ref="/ict_for_dalit_human_right_v4/event_place/Upazila_event">
         <label>উপজেলা</label>
       </input>
-      <input query="instance('Union_event')/root/item[Division_event =  /ict_for_dalit_human_right_v3/event_place/Division_event  and District_event =  /ict_for_dalit_human_right_v3/event_place/District_event  and Upazila_event =  /ict_for_dalit_human_right_v3/event_place/Upazila_event ]" ref="/ict_for_dalit_human_right_v3/event_place/Union_event">
+      <input ref="/ict_for_dalit_human_right_v4/event_place/Union_event">
         <label>ইউনিয়ন</label>
       </input>
-      <input ref="/ict_for_dalit_human_right_v3/event_place/Village_event">
+      <input ref="/ict_for_dalit_human_right_v4/event_place/Village_event">
         <label>গ্রাম</label>
       </input>
     </group>
-    <input ref="/ict_for_dalit_human_right_v3/victim_name">
+    <input ref="/ict_for_dalit_human_right_v4/victim_name">
       <label>ভিকটিমের নাম</label>
     </input>
-    <select1 ref="/ict_for_dalit_human_right_v3/victim_cast">
+    <select1 ref="/ict_for_dalit_human_right_v4/victim_cast">
       <label>ভিকটিমের সম্প্রদায়</label>
       <item>
         <label>ঋষি</label>
@@ -305,15 +311,15 @@
         <value>26</value>
       </item>
     </select1>
-    <input ref="/ict_for_dalit_human_right_v3/other_victim_cast_name">
+    <input ref="/ict_for_dalit_human_right_v4/other_victim_cast_name">
       <label>ভিকটিমের সম্প্রদায় অন্যান্য</label>
     </input>
-    <input ref="/ict_for_dalit_human_right_v3/damage_details">
+    <input ref="/ict_for_dalit_human_right_v4/damage_details">
       <label>ক্ষয়-ক্ষতির বিবরণ</label>
     </input>
-    <group ref="/ict_for_dalit_human_right_v3/victim_address">
+    <group ref="/ict_for_dalit_human_right_v4/victim_address">
       <label>ভিকটিমের ঠিকানা</label>
-      <select1 ref="/ict_for_dalit_human_right_v3/victim_address/Division_victim">
+      <select1 ref="/ict_for_dalit_human_right_v4/victim_address/Division_victim">
         <label>বিভাগ</label>
         <item>
           <label>BARISAL</label>
@@ -344,27 +350,42 @@
           <value>60</value>
         </item>
       </select1>
-      <input query="instance('District_victim')/root/item[Division_victim =  /ict_for_dalit_human_right_v3/victim_address/Division_victim ]" ref="/ict_for_dalit_human_right_v3/victim_address/District_victim">
+      <input query="instance('District_victim')/root/item[Division_victim =  /ict_for_dalit_human_right_v4/victim_address/Division_victim ]" ref="/ict_for_dalit_human_right_v4/victim_address/District_victim">
         <label>জেলা</label>
       </input>
-      <input query="instance('Upazila_victim')/root/item[Division_victim =  /ict_for_dalit_human_right_v3/victim_address/Division_victim  and District_victim =  /ict_for_dalit_human_right_v3/victim_address/District_victim ]" ref="/ict_for_dalit_human_right_v3/victim_address/Upazila_victim">
+      <input query="instance('Upazila_victim')/root/item[Division_victim =  /ict_for_dalit_human_right_v4/victim_address/Division_victim  and District_victim =  /ict_for_dalit_human_right_v4/victim_address/District_victim ]" ref="/ict_for_dalit_human_right_v4/victim_address/Upazila_victim">
         <label>উপজেলা</label>
       </input>
-      <input query="instance('Union_victim')/root/item[Division_victim =  /ict_for_dalit_human_right_v3/victim_address/Division_victim  and District_victim =  /ict_for_dalit_human_right_v3/victim_address/District_victim  and Upazila_victim =  /ict_for_dalit_human_right_v3/victim_address/Upazila_victim ]" ref="/ict_for_dalit_human_right_v3/victim_address/Union_victim">
+      <input ref="/ict_for_dalit_human_right_v4/victim_address/Union_victim">
         <label>ইউনিয়ন</label>
       </input>
-      <input ref="/ict_for_dalit_human_right_v3/victim_address/Village_victim">
+      <input ref="/ict_for_dalit_human_right_v4/victim_address/Village_victim">
         <label>গ্রাম</label>
       </input>
     </group>
-    <input appearance="numbers" ref="/ict_for_dalit_human_right_v3/victim_contactInfo">
+    <input appearance="numbers" ref="/ict_for_dalit_human_right_v4/victim_contactInfo">
       <label>যোগাযোগের নম্বর</label>
     </input>
-    <input ref="/ict_for_dalit_human_right_v3/accused_name">
+    <input ref="/ict_for_dalit_human_right_v4/accused_name">
       <label>অভিযুক্তের নাম</label>
     </input>
-    <select1 ref="/ict_for_dalit_human_right_v3/accused_cast">
-      <label>অভিযুক্তের সম্প্রদায়</label>
+    <select1 ref="/ict_for_dalit_human_right_v4/accused_castRelig">
+      <label>অভিযুক্তের সম্প্রদায় /ধর্ম</label>
+      <item>
+        <label>দলিত</label>
+        <value>1</value>
+      </item>
+      <item>
+        <label>অদলিত</label>
+        <value>2</value>
+      </item>
+      <item>
+        <label>অন্যান্য</label>
+        <value>3</value>
+      </item>
+    </select1>
+    <select1 ref="/ict_for_dalit_human_right_v4/accused_dalit">
+      <label>দলিত</label>
       <item>
         <label>ঋষি</label>
         <value>1</value>
@@ -465,17 +486,32 @@
         <label>হালদার</label>
         <value>25</value>
       </item>
+    </select1>
+    <select1 ref="/ict_for_dalit_human_right_v4/accused_religion">
+      <label>অদলিত</label>
       <item>
-        <label>অন্যান্য</label>
-        <value>26</value>
+        <label>মুসলিম</label>
+        <value>1</value>
+      </item>
+      <item>
+        <label>হিন্দু</label>
+        <value>2</value>
+      </item>
+      <item>
+        <label>খ্রীষ্টান</label>
+        <value>3</value>
+      </item>
+      <item>
+        <label>বৌদ্ধ</label>
+        <value>4</value>
       </item>
     </select1>
-    <input ref="/ict_for_dalit_human_right_v3/other_accused_cast_name">
-      <label>অভিযুক্তের সম্প্রদায় অন্যান্য</label>
+    <input ref="/ict_for_dalit_human_right_v4/other_accused_cast_name">
+      <label>অন্যান্য</label>
     </input>
-    <group ref="/ict_for_dalit_human_right_v3/accused_address">
+    <group ref="/ict_for_dalit_human_right_v4/accused_address">
       <label>অভিযুক্তের ঠিকানা</label>
-      <select1 ref="/ict_for_dalit_human_right_v3/accused_address/Division_accused">
+      <select1 ref="/ict_for_dalit_human_right_v4/accused_address/Division_accused">
         <label>বিভাগ</label>
         <item>
           <label>BARISAL</label>
@@ -506,40 +542,43 @@
           <value>60</value>
         </item>
       </select1>
-      <input query="instance('District_accused')/root/item[Division_accused =  /ict_for_dalit_human_right_v3/accused_address/Division_accused ]" ref="/ict_for_dalit_human_right_v3/accused_address/District_accused">
+      <input query="instance('District_accused')/root/item[Division_accused =  /ict_for_dalit_human_right_v4/accused_address/Division_accused ]" ref="/ict_for_dalit_human_right_v4/accused_address/District_accused">
         <label>জেলা</label>
       </input>
-      <input query="instance('Upazila_accused')/root/item[Division_accused =  /ict_for_dalit_human_right_v3/accused_address/Division_accused  and District_accused =  /ict_for_dalit_human_right_v3/accused_address/District_accused ]" ref="/ict_for_dalit_human_right_v3/accused_address/Upazila_accused">
+      <input query="instance('Upazila_accused')/root/item[Division_accused =  /ict_for_dalit_human_right_v4/accused_address/Division_accused  and District_accused =  /ict_for_dalit_human_right_v4/accused_address/District_accused ]" ref="/ict_for_dalit_human_right_v4/accused_address/Upazila_accused">
         <label>উপজেলা</label>
       </input>
-      <input query="instance('Union_accused')/root/item[Division_accused =  /ict_for_dalit_human_right_v3/accused_address/Division_accused  and District_accused =  /ict_for_dalit_human_right_v3/accused_address/District_accused  and Upazila_accused =  /ict_for_dalit_human_right_v3/accused_address/Upazila_accused ]" ref="/ict_for_dalit_human_right_v3/accused_address/Union_accused">
+      <input ref="/ict_for_dalit_human_right_v4/accused_address/Union_accused">
         <label>ইউনিয়ন</label>
       </input>
-      <input ref="/ict_for_dalit_human_right_v3/accused_address/Village_accused">
+      <input ref="/ict_for_dalit_human_right_v4/accused_address/Village_accused">
         <label>গ্রাম</label>
       </input>
     </group>
-    <input appearance="numbers" ref="/ict_for_dalit_human_right_v3/accused_contactInfo">
+    <input appearance="numbers" ref="/ict_for_dalit_human_right_v4/accused_contactInfo">
       <label>যোগাযোগের নম্বর</label>
     </input>
-    <input ref="/ict_for_dalit_human_right_v3/event_details">
+    <input ref="/ict_for_dalit_human_right_v4/event_details">
       <label>ঘটনার সংক্ষিপ্ত বিবরণ</label>
     </input>
-    <input ref="/ict_for_dalit_human_right_v3/step_taken">
+    <input ref="/ict_for_dalit_human_right_v4/step_taken">
       <label>গৃহিত পদক্ষেপ</label>
     </input>
-    <input ref="/ict_for_dalit_human_right_v3/current_situation">
+    <input ref="/ict_for_dalit_human_right_v4/current_situation">
       <label>বর্তমান অবস্থা</label>
     </input>
-    <input ref="/ict_for_dalit_human_right_v3/informer_name">
+    <input ref="/ict_for_dalit_human_right_v4/informer_name">
       <label>তথ্যদাতার নাম</label>
     </input>
-    <input appearance="numbers" ref="/ict_for_dalit_human_right_v3/informer_contactinfo">
+    <input appearance="numbers" ref="/ict_for_dalit_human_right_v4/informer_contactinfo">
       <label>তথ্যদাতার মোবাইল নম্বর</label>
     </input>
-    <input ref="/ict_for_dalit_human_right_v3/GPS">
+    <input ref="/ict_for_dalit_human_right_v4/GPS">
       <label>Please provide Geo Point</label>
       <hint>GPS coordinates can only be collected when outside.</hint>
     </input>
+    <upload mediatype="image/*" ref="/ict_for_dalit_human_right_v4/picture">
+      <label>Please take a picture</label>
+    </upload>
   </h:body>
 </h:html>

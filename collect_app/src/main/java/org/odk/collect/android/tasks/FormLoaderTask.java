@@ -198,10 +198,10 @@ public class FormLoaderTask extends AsyncTask<String, String, FormLoaderTask.FEC
     String formFileName = formXml.getName().substring(0, formXml.getName().lastIndexOf("."));
     File formMediaDir = new File(formXml.getParent(), formFileName + "-media");
 
-    externalDataManager = new ExternalDataManagerImpl(formMediaDir);
+    externalDataManager = (org.koboc.collect.android.external.ExternalDataManager) new ExternalDataManagerImpl(formMediaDir);
 
     // add external data function handlers
-    ExternalDataHandler externalDataHandlerPull = new ExternalDataHandlerPull(externalDataManager);
+    ExternalDataHandler externalDataHandlerPull = (org.koboc.collect.android.external.ExternalDataHandler) new ExternalDataHandlerPull(externalDataManager);
     fd.getEvaluationContext().addFunctionHandler(externalDataHandlerPull);
 
     try {
@@ -227,7 +227,7 @@ public class FormLoaderTask extends AsyncTask<String, String, FormLoaderTask.FEC
       // import existing data into formdef
       if (mInstancePath != null) {
         File instance = new File(mInstancePath);
-        File shadowInstance = SaveToDiskTask.savepointFile(instance);
+        File shadowInstance = org.koboc.collect.android.tasks.SaveToDiskTask.savepointFile(instance);
         if (shadowInstance.exists() && (shadowInstance.lastModified() > instance.lastModified())) {
           // the savepoint is newer than the saved value of the instance.
           // use it.
@@ -400,7 +400,7 @@ public class FormLoaderTask extends AsyncTask<String, String, FormLoaderTask.FEC
         publishProgress(Collect.getInstance()
             .getString(R.string.survey_loading_reading_csv_message));
 
-        ExternalDataReader externalDataReader = new ExternalDataReaderImpl(this);
+        ExternalDataReader externalDataReader = (org.koboc.collect.android.external.ExternalDataReader) new ExternalDataReaderImpl(this);
         externalDataReader.doImport(externalDataMap);
       }
     }

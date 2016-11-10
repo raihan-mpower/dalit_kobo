@@ -40,18 +40,17 @@ import java.util.List;
 
 
 public class policeMainActivity extends Activity implements AdapterView.OnItemSelectedListener {
-    public Spinner divisionSpinner,districtSpinner;
-
+    public Spinner divisionSpinner;
     public ListView listView;
-
     public StationAdapter stationAdapter;
 
-    private EditText editText;
-    private CharSequence [] arr={"বরগুন", "বরিশাল", "ভোলা", "ঝালকাঠি", "পটুয়াখালী", "পিরোজপুর", "বান্দরবান", "ব্রাহ্মণবাড়ীয়া", "চাঁদপুর", "চট্টগ্রাম", "কুমিল্লা",
-            "কক্সবাজার", "ফেনী","খাগড়াছড়ি","লক্ষ্মীপুর","নোয়াখালী","রাঙ্গামাটি","ঢাকা","ফরিদপুর","গাজীপুর","গোপালগঞ্জ","কিশোরগঞ্জ","মাদারীপুর","মানিকগঞ্জ","মুন্সীগঞ্জ",
-            "নারায়ণগঞ্জ","নরসিংদী","রাজবাড়ী","শরীয়তপুর","টাঙ্গাইল","বাগেরহাট","চুয়াডাঙ্গা","যশোর","ঝিনাইদহ","খুলনা","কুষ্টিয়া","মাগুরা","মেহেরপুর","নড়াইল","সাতক্ষিরা",
-            "জামালপুর","ময়মনসিংহ","নেত্রকোনা","শেরপুর","বগুড়া","জয়পুরহাট","নওগাঁ","নাটোর","নওয়াবগঞ্জ","পাবনা","রাজশাহী","সিরাজগঞ্জ","দিনাজপুর",
-            "গাইবান্ধা","কুড়িগ্রাম","লালমনিরহাট","নীলফামারী","পঞ্চগড়","রংপুর","ঠাকুরগাঁও","হবিগঞ্জ","মৌলভীবাজার","সুনামগঞ্জ","সিলেট"};
+    //private EditText editText;
+    private CharSequence [] arr={"বরগুনা","বরিশাল","ভোলা","ঝালকাঠি","পটুয়াখালী","পিরোজপুর","বান্দরবান","ব্রাহ্মণবাড়িয়া","চাঁদপুর","চট্টগ্রাম","কুমিল্লা",
+            "কক্সবাজার", "ফেনী","খাগড়াছড়ি","লক্ষীপুর","নোয়াখালি","রাঙ্গামাটি","ঢাকা","ফরিদপুর","গাজীপুর","গোপালগঞ্জ","কিশোরগঞ্জ","মাদারিপুর","মানিকগঞ্জ","মুন্সীগঞ্জ",
+            "নারায়নগঞ্জ","নরসিংদী","রাজবাড়ি","শরিয়তপুর","টাঙ্গাইল","বাগেরহাট","চুয়াডাঙ্গা","যশোর","ঝিনাইদহ","খুলনা","কুষ্টিয়া","মাগুরা","মেহেরপুর","নড়াইল","সাতক্ষীরা",
+            "জামালপুর","ময়মনসিংহ","নেত্রকোনা","শেরপুর","বগুড়া","জয়পুরহাট","নওগাঁ","নাটোর","চাপাইনবাবগঞ্জ","পাবনা","রাজশাহী","সিরাজগঞ্জ","দিনাজপুর",
+            "গাইবান্ধা","কুড়িগ্রাম","লালমনিরহাট","নীলফামারী","পঞ্চগড়","রংপুর","ঠাকুরগাঁও","হবিগঞ্জ","মৌলভীবাজার","সুনামগঞ্জ","সিলেট"};
+
 
 
 
@@ -64,27 +63,11 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
         divisionSpinner = (Spinner) findViewById(R.id.spinnerDiv);
         listView = (ListView) findViewById(R.id.listView);
 
-
-       /* String [] arr={"বরগুন", "বরিশাল", "ভোলা", "ঝালকাঠি", "পটুয়াখালী", "পিরোজপুর", "বান্দরবান", "ব্রাহ্মণবাড়ীয়া", "চাঁদপুর", "চট্টগ্রাম", "কুমিল্লা",
-                "কক্সবাজার", "ফেনী","খাগড়াছড়ি","লক্ষ্মীপুর","নোয়াখালী","রাঙ্গামাটি","ঢাকা","ফরিদপুর","গাজীপুর","গোপালগঞ্জ","কিশোরগঞ্জ","মাদারীপুর","মানিকগঞ্জ","মুন্সীগঞ্জ",
-                "নারায়ণগঞ্জ","নরসিংদী","রাজবাড়ী","শরীয়তপুর","টাঙ্গাইল","বাগেরহাট","চুয়াডাঙ্গা","যশোর","ঝিনাইদহ","খুলনা","কুষ্টিয়া","মাগুরা","মেহেরপুর","নড়াইল","সাতক্ষিরা",
-                "জামালপুর","ময়মনসিংহ","নেত্রকোনা","শেরপুর","বগুড়া","জয়পুরহাট","নওগাঁ","নাটোর","নওয়াবগঞ্জ","পাবনা","রাজশাহী","সিরাজগঞ্জ","দিনাজপুর",
-                "গাইবান্ধা","কুড়িগ্রাম","লালমনিরহাট","নীলফামারী","পঞ্চগড়","রংপুর","ঠাকুরগাঁও","হবিগঞ্জ","মৌলভীবাজার","সুনামগঞ্জ","সিলেট"};*/
-
-      /* ArrayAdapter<CharSequence> divAdapter = ArrayAdapter.createFromResource(this,
-                R.array.devision_array, android.R.layout.simple_spinner_item);*/
         ArrayAdapter<CharSequence> divAdapter=new ArrayAdapter<CharSequence>(policeMainActivity.this, android.R.layout.simple_spinner_dropdown_item, arr);
-
         divAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
 
         divisionSpinner.setAdapter(divAdapter);
         divisionSpinner.setOnItemSelectedListener(this);
-
-
-
-
-
-
 
     }
 
@@ -109,37 +92,6 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
         Log.d("LOG",selected.toString());
         loadJSONFromAsset();
         stationAdapter.getFilter().filter(selected);
-      /*  switch (position) {
-            case 0:
-                stationAdapter.getFilter().filter(selected);
-
-                break;
-            case 1:
-                stationAdapter.getFilter().filter("চট্টগ্রাম");
-
-                break;
-            case 2:
-                stationAdapter.getFilter().filter("রাজশাহী");
-
-                break;
-            case 3:
-                stationAdapter.getFilter().filter("রংপুর");
-
-                break;
-            case 4:
-                stationAdapter.getFilter().filter("খুলনা");
-
-                break;
-            case 5:
-                stationAdapter.getFilter().filter("বরিশাল");
-
-                break;
-            case 6:
-                stationAdapter.getFilter().filter("সিলেট");
-
-                break;
-
-        }*/
 
     }
 
@@ -148,10 +100,8 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
 
     }
 
-
-
-
-    public String loadJSONFromAsset() {
+    public String loadJSONFromAsset()
+    {
         String json = null;
         try {
 
@@ -179,7 +129,8 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
     }
 
 
-    public void loadJson(String json) {
+    public void loadJson(String json)
+    {
         ArrayList<PoliceStation> policeStationsList;
 
         try {
@@ -216,7 +167,6 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
     }
 
     public class StationAdapter extends ArrayAdapter implements Filterable
-
     {
         private LayoutInflater layoutInflater;
         ArrayList<PoliceStation> stationList;
@@ -224,7 +174,8 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
         private int resource;
 
 
-        public StationAdapter(Context context, int resource, ArrayList<PoliceStation> objects) {
+        public StationAdapter(Context context, int resource, ArrayList<PoliceStation> objects)
+        {
             super(context, resource, objects);
             this.resource = resource;
             stationList = objects;
@@ -234,7 +185,8 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
             //View view=convertView;
 
             ViewHolder holder = null;
@@ -277,9 +229,11 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
 
        @Override
         public Filter getFilter() {
-            Filter filter=new Filter() {
+            Filter filter=new Filter()
+            {
                 @Override
-                protected FilterResults performFiltering(CharSequence constraint) {
+                protected FilterResults performFiltering(CharSequence constraint)
+                {
 
                     FilterResults results = new FilterResults();        // Holds the results of a filtering operation in values
                     ArrayList<PoliceStation> FilteredArrList = new ArrayList<>();
@@ -314,6 +268,7 @@ public class policeMainActivity extends Activity implements AdapterView.OnItemSe
                             }
                         }
                         // set the Filtered result to return
+                        Log.d("LOG",Integer.toString(FilteredArrList.size()));
                         results.count = FilteredArrList.size();
                         results.values = FilteredArrList;
                     }

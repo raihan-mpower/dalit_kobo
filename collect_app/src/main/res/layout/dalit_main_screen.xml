@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <ScrollView
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp">
@@ -51,11 +52,11 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/button5" />
 
-            <Button
+          <!--  <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/button6"
-                android:text="বাংলাদেশের প্রচলিত আইন" />
+                android:text="বাংলাদেশের প্রচলিত আইন" /> -->
 
             <Button
                 android:text="দলিত মানবাধিকার কর্মী"

@@ -17,14 +17,13 @@
         android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/divison_prompt" />
+        android:text="@string/district_prompt" />
 
     <Spinner
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv1"
-        android:prompt="@string/divison_prompt"
         android:layout_centerHorizontal="true"
         android:id="@+id/spinnerDiv" />
 
